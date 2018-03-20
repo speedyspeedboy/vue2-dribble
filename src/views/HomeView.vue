@@ -18,7 +18,7 @@ export default {
   text-align: center;
 }
 input {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 10px;
   width: 350px;
   height: 34px;

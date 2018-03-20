@@ -39,7 +39,7 @@ li {
   top: 45px;
   transition: left .2s ease-in-out 0s;
   /* transition: right .2s ease-in-out 0s; */
-  -webkit-transition: left .2s ease-in-out 0s;
+  /* -webkit-transition: left .2s ease-in-out 0s; */
   /* -webkit-transition: right .2s ease-in-out 0s; */
 }
 li:nth-child(1):hover~ .move {
@@ -49,6 +49,6 @@ li:nth-child(2):hover~ .move {
   left: 180px;
 }
 li:nth-child(3):hover~ .move {
-    left: 320px;
+  left: 320px;
 }
 </style>
