@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+</head>
+
+<body>
+  <script type="text/javascript">
+    var arr = ["apple", "orange", "apple", "orange", "pear", "orange", 1, NaN, 1, NaN,0,0,undefined,null,undefined,null];
+function unique() {
+    var ret = [];
+    arr.reduce(function(prev, next) {
+        prev[next] = (prev[next] + 1) || 1;
+        //console.log(next);
+        if (prev[next] === 1) ret.push(next);
+        return prev;
+    },
+    {});
+    return ret;
+    debugger;
+    console.log(123);
+}
+  </script>
+</body>
+
+</html>

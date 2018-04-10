@@ -1,21 +1,41 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <header-bar></header-bar>
+    <!-- <header-bar></header-bar> -->
     <router-view></router-view>
+    <!-- <foot-bar></foot-bar> -->
   </div>
 </template>
 
 <script>
-import HeaderBar from './components/HeaderBar'
-
+// import HeaderBar from './components/HeaderBar'
+// import FootBar from './components/FootBar'
 export default {
-  name: 'App',
-  components: { HeaderBar }
+  name: 'App'
+  // components: { HeaderBar, FootBar }
 }
 </script>
 
 <style>
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,6 +43,6 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
   /* margin-top: 60px; */
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 </style>
