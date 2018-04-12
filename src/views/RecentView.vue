@@ -31,12 +31,7 @@ export default {
   width: 94%;
   margin: 0 auto;
 }
-.column-left{
-  flex-direction: column;
-  width: 50%;
-  // margin: 4%;
-}
-.column-right {
+.column-left, .column-right{
   flex-direction: column;
   width: 50%;
   // margin: 4%;
