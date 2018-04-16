@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <header-bar></header-bar>
     <router-view></router-view>
     <foot-bar></foot-bar>
@@ -19,5 +19,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.home {
+  background: linear-gradient(165deg, rgb(255, 142, 93) 50%, rgb(255, 255, 255) 50%)no-repeat;
+  background-size: 100% 250px;
+  background-attachment: fixed;
+}
 </style>

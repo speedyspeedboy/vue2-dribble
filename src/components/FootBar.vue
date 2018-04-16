@@ -20,11 +20,12 @@ export default {
   position: fixed;
   bottom: 0px;
   // right: 0px;
-  height: 50px;
+  height: 60px;
   // line-height: 60px;
   width: 100%;
-  // background: deepskyblue;
+  background: #ffffff;
   display: flex;
+  box-shadow:  0px -1px 20px rgba(138, 132, 132, 0.3);
   .tab-item {
     flex: 1;
     // width: 20px;
@@ -32,7 +33,7 @@ export default {
     // height: 50px;
     // line-height: 50px;
     text-align: center;
-    // margin-top: 5px;
+    margin-top: 8px;
     img {
       width: 40px;
       height: 40px;
