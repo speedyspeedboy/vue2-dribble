@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import HomeView from '../views/HomeView'
 import Home from '../views/Home'
 import RecentView from '../views/RecentView'
+import MyView from '../views/MyView'
 
 Vue.use(Router)
 
@@ -30,6 +31,10 @@ export default new Router({
         {
           path: '/home/recent',
           component: RecentView
+        },
+        {
+          path: '/home/my',
+          component: MyView
         }
       ]
     }

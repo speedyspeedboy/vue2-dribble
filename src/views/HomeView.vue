@@ -1,23 +1,26 @@
 <template>
-  <div>
+  <div class="homeview">
+      <header-bar></header-bar>
       <card></card>
   </div>
 </template>
 
 <script>
+import HeaderBar from '../components/HeaderBar'
 import Card from '../components/Card'
 export default {
   name: 'homeview',
   data () {
     return {}
   },
-  components: { Card }
+  components: { HeaderBar, Card }
 }
 </script>
 
 <style lang="scss" scoped>
-.homehead {
-  // background: rgb(238, 240, 242);
-  // text-align: center;
+.homeview {
+  background: linear-gradient(165deg, rgb(255, 142, 93) 50%, rgb(255, 255, 255) 50%)no-repeat;
+  background-size: 100% 250px;
+  background-attachment: fixed;
 }
 </style>

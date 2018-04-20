@@ -1,8 +1,8 @@
 <template>
   <div class="footer">
-    <div class="tab-item home"><img src="../assets/home.png"></div>
+    <div class="tab-item home"><router-link to="/home/homepage"><img src="../assets/home.png"></router-link></div>
     <div class="tab-item search"><img src="../assets/search.png"></div>
-    <div class="tab-item my"><img src="../assets/user.png"></div>
+    <div class="tab-item my"><router-link to="/home/my"><img src="../assets/user.png"></router-link></div>
   </div>
 </template>
 

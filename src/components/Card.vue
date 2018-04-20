@@ -1,7 +1,10 @@
 <template>
   <div class="card">
-        <div class="cardall" v-for="item in items" :key="item.message">
-            <img src="../assets/RMPGE.jpg">
+        <div class="cardall" v-for="item in items" :key="item.message" >
+            <!-- <img src="../assets/RMPGE.jpg"> -->
+            <!-- <transition name="scale"> -->
+              <img src="../assets/RMPGE.jpg" :class="{small: small}" @click="onClick">
+            <!-- </transition> -->
             <h3 class="title">{{ item.message }}</h3>
             <p class="type">动画/科幻</p>
             <p class="year">2016</p>
@@ -26,7 +29,13 @@ export default {
         { message: '3' }
 
       ],
-      full: 5
+      full: 5,
+      small: false
+    }
+  },
+  methods: {
+    onClick () {
+      this.small = !this.small
     }
   }
 }
@@ -34,7 +43,21 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  padding-top: 30px;
+  // padding-top: 10px;
+}
+// .scale-enter-active, .scale-leave-active {
+//   transition: all .5s;
+// }
+// .scale-enter, .scale-leave-to {
+//   opacity: 0;
+//   transform: scale(0.5);
+//   // height: 50%;
+//   // float: right;
+//   // visibility: hidden;
+// }
+.small {
+  transition: all .5s;
+  transform: scale(0.5);
 }
 .cardall {
   width: 84%;
@@ -51,6 +74,7 @@ export default {
     border-radius: 6px;
     float: left;
   }
+
   .title {
     margin-top: 10px;
     margin-left: 120px;
