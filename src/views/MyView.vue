@@ -10,13 +10,8 @@
       <a>language</a>
       <a>rating</a>
     </div>
-    <ul class="scrollhor">
-      <li>
-        <div class="album">
-          <img src="../assets/horzin.jpg">
-        </div>
-      </li>
-      <li>
+    <ul class="scrollhor" >
+      <li v-for="item in items" :key="item">
         <div class="album">
           <img src="../assets/horzin.jpg">
         </div>
@@ -32,7 +27,8 @@
 export default {
   data () {
     return {
-      big: false
+      big: false,
+      items: 3
     }
   },
   methods: {

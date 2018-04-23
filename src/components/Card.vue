@@ -1,19 +1,28 @@
 <template>
   <div class="card">
-        <div class="cardall" v-for="item in items" :key="item.message" >
-            <!-- <img src="../assets/RMPGE.jpg"> -->
-            <!-- <transition name="scale"> -->
-              <img src="../assets/RMPGE.jpg" :class="{small: small}" @click="onClick">
-            <!-- </transition> -->
-            <h3 class="title">{{ item.message }}</h3>
-            <p class="type">动画/科幻</p>
-            <p class="year">2016</p>
-            <div class="rating">
-              <template v-for="n in full">
-                <span class="star-full"></span>
-              </template>
-            </div>
+    <div class="scrolldiv">
+    <ul class="scrollhor" >
+      <li v-for="item in items" :key="item">
+        <div class="album">
+          <img src="../assets/horzin.jpg">
         </div>
+      </li>
+    </ul>
+    </div>
+    <div class="cardall" v-for="item in items" :key="item.message" >
+        <!-- <img src="../assets/RMPGE.jpg"> -->
+        <!-- <transition name="scale"> -->
+          <img src="../assets/RMPGE.jpg" :class="{small: small}" @click="onClick">
+        <!-- </transition> -->
+        <h3 class="title">{{ item.message }}</h3>
+        <p class="type">动画/科幻</p>
+        <p class="year">2016</p>
+        <div class="rating">
+          <template v-for="n in full">
+            <span class="star-full"></span>
+          </template>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -69,6 +78,7 @@ export default {
   position: relative;
   // background: aquamarine;
   box-shadow:  2px 3px 22px 4px rgba(102, 97, 97, 0.1);
+  -webkit-overflow-scrolling: touch;
   img {
     height: 100%;
     border-radius: 6px;
@@ -110,5 +120,47 @@ export default {
     background-size: 1.3rem 1.3rem;
   }
 }
-
+.album {
+  margin:20px 20px;
+  width: 200px;
+  height: 130px;
+  overflow: hidden;
+  border: 1px solid cornflowerblue;
+  position: relative;
+  border-radius: 10px;
+  img {
+    height: 100%;
+    width: auto;
+    left:50%;
+    position: relative;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+  }
+}
+.scrolldiv {
+  overflow: hidden;
+}
+.scrollhor {
+  // display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  margin-bottom: -10px;
+  // -webkit-overflow-scrolling: touch
+  // -webkit-margin-before: 1em;
+  // -webkit-margin-after: 1em;
+  // -webkit-margin-start: 0px;
+  // -webkit-margin-end: 0px;
+  // -webkit-padding-start: 40px;
+  li {
+    display: inline-block;
+  }
+}
+// .scrollhor::-webkit-scrollbar {
+//   display: none;
+// }
+.intro {
+  margin: 20px;
+}
 </style>

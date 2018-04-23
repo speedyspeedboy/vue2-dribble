@@ -1,7 +1,7 @@
 <template>
   <div class="all">
     <div class="headbar">
-      <p>IN THEATERS</p>
+      <p>NEW</p>
     </div>
   </div>
 </template>
@@ -15,21 +15,23 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .all {
   /* z-index: 1000; */
   /* position: fixed; */
   height: 30px;
   width: 100%;
-  top: 0;
-  background: darkturquoise;
+  /* top: 10px; */
+  /* margin-top: 10px; */
+  line-height: 30px;
+  // background: darkturquoise;
 }
 .headbar {
-  /* list-style: none; */
-  /* display: flex; */
-  /* justify-content: space-around; */
-  /* padding: 10px,0,0,0; */
-  /* margin-top: 15px; */
-  /* margin-bottom: 20px; */
+  margin-top: 25px;
+  padding: 0 20px;
+  p {
+    font-size: 2rem;
+    font-weight: bold;
+  }
 }
 </style>
