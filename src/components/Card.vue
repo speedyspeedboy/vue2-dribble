@@ -2,7 +2,7 @@
   <div class="card">
     <div class="scrolldiv">
     <ul class="scrollhor" >
-      <li v-for="item in items" :key="item">
+      <li v-for="item in items" :key="item.message">
         <div class="album">
           <img src="../assets/horzin.jpg">
         </div>
@@ -18,15 +18,17 @@
         <p class="type">动画/科幻</p>
         <p class="year">2016</p>
         <div class="rating">
-          <template v-for="n in full">
+          <!-- <template v-for="n in full">
             <span class="star-full"></span>
-          </template>
+          </template> -->
         </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data () {
     return {
@@ -42,10 +44,26 @@ export default {
       small: false
     }
   },
+  computed: {
+    ...mapState({
+      newMovies: state => state.movie.moviePictures
+    })
+  },
   methods: {
     onClick () {
       this.small = !this.small
+    },
+    getMovie: function () {
+      this.$store.dispatch('getMovie')
     }
+  },
+  created () {
+    // this.$http
+    //   .jsonp('https://api.themoviedb.org/3/movie/245891-john-wick/images?api_key=d07c464d79587f342c608751fd48b9c2')
+    //   .then(res => {
+    //     console.log(res.body)
+    //   }
+    //   )
   }
 }
 </script>
