@@ -28,6 +28,8 @@
 
 <script>
 import { mapState } from 'vuex'
+import request from 'superagent'
+import jsonp from 'superagent-jsonp'
 
 export default {
   data () {
@@ -58,12 +60,13 @@ export default {
     }
   },
   created () {
-    // this.$http
-    //   .jsonp('https://api.themoviedb.org/3/movie/245891-john-wick/images?api_key=d07c464d79587f342c608751fd48b9c2')
-    //   .then(res => {
-    //     console.log(res.body)
-    //   }
-    //   )
+    request
+      .get('https://api.themoviedb.org/3/movie/245891/images?api_key=d07c464d79587f342c608751fd48b9c2')
+      .end((err, res) => {
+        if (!err) {
+          console.log(res.body.backdrops)
+        }
+      })
   }
 }
 </script>
