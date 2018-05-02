@@ -29,7 +29,6 @@
 <script>
 import { mapState } from 'vuex'
 import request from 'superagent'
-import jsonp from 'superagent-jsonp'
 
 export default {
   data () {
@@ -64,7 +63,8 @@ export default {
       .get('https://api.themoviedb.org/3/movie/245891/images?api_key=d07c464d79587f342c608751fd48b9c2')
       .end((err, res) => {
         if (!err) {
-          console.log(res.body.backdrops)
+          console.log(res.body)
+          console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path)
         }
       })
   }
