@@ -2,19 +2,19 @@
   <div class="card">
     <div class="scrolldiv">
     <ul class="scrollhor" >
-      <li v-for="item in items" :key="item.message">
+      <li v-for="item in pic" :key="item.message">
         <div class="album">
-          <img src="../assets/horzin.jpg">
+          <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path">
         </div>
       </li>
     </ul>
     </div>
-    <div class="cardall" v-for="item in items" :key="item.message" >
+    <div class="cardall" v-for="item in pic" :key="item.message" >
         <!-- <img src="../assets/RMPGE.jpg"> -->
         <!-- <transition name="scale"> -->
-          <img src="../assets/RMPGE.jpg" :class="{small: small}" @click="onClick">
+          <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path" :class="{small: small}" @click="onClick">
         <!-- </transition> -->
-        <h3 class="title">{{ item.message }}</h3>
+        <h3 class="title">{{ item.original_title }}</h3>
         <p class="type">动画/科幻</p>
         <p class="year">2016</p>
         <div class="rating">
@@ -33,14 +33,7 @@ import request from 'superagent'
 export default {
   data () {
     return {
-      items: [
-        { message: 'Rampage' },
-        { message: 'The Good Dinosaur The Good Dinosaur' },
-        { message: '1' },
-        { message: '2' },
-        { message: '3' }
-
-      ],
+      pic: [],
       full: 5,
       small: false
     }
@@ -65,6 +58,16 @@ export default {
         if (!err) {
           console.log(res.body)
           console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path)
+          // this.pic = 'https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path
+        }
+      })
+    request
+      .get('https://api.themoviedb.org/3/movie/popular?api_key=d07c464d79587f342c608751fd48b9c2&language=en-US&page=1')
+      .end((err, res) => {
+        if (!err) {
+          console.log(res.body)
+          console.log(res.body.results)
+          this.pic = res.body.results
         }
       })
   }
