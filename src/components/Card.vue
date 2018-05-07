@@ -3,10 +3,12 @@
     <div class="scrolldiv">
     <ul class="scrollhor" >
       <li v-for="item in pic" :key="item.message">
+        <router-link :to="home/my" append>
         <div class="album">
           <!-- <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"> -->
-          <img src="https://image.tmdb.org/t/p/original/umC04Cozevu8nn3JTDJ1pc7PVTn.jpg">
+          <img :src="'https://image.tmdb.org/t/p/original/' + item.backdrop_path">
         </div>
+        </router-link>
       </li>
     </ul>
     </div>
@@ -35,6 +37,7 @@ export default {
   data () {
     return {
       pic: [],
+      horpic: [],
       full: 5,
       small: false,
       apikey: 'd07c464d79587f342c608751fd48b9c2'
@@ -56,21 +59,23 @@ export default {
   created () {
     request
       .get('https://api.themoviedb.org/3/movie/245891/images?api_key=' + this.apikey)
-      .end((err, res) => {
-        if (!err) {
-          console.log(res.body)
-          console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path)
-          // this.pic = 'https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path
-        }
+      .then((res) => {
+        // console.log(res.body)
+        // console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path)
+        // this.pic = 'https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path
+      })
+      .catch(function (err) {
+        console.log(err.message, err.response)
       })
     request
       .get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.apikey)
-      .end((err, res) => {
-        if (!err) {
-          console.log(res.body)
-          console.log(res.body.results)
-          this.pic = res.body.results
-        }
+      .then((res) => {
+        console.log(res.body)
+        console.log(res.body.results)
+        this.pic = res.body.results
+      })
+      .catch(function (err) {
+        console.log(err.message, err.response)
       })
   }
 }

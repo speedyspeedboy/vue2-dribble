@@ -53,8 +53,8 @@ export default {
       .then(res => {
         // if (!err) {
         // console.log(res.body)
-        console.log(res.body.overview)
-        console.log()
+        // console.log(res.body.overview)
+        // console.log()
         this.info = res.body.overview
         this.length = res.body.runtime
         this.language = res.body.original_language
@@ -65,12 +65,13 @@ export default {
       })
     request
       .get('https://api.themoviedb.org/3/movie/299536/images?api_key=' + this.apikey)
-      .end((err, res) => {
-        if (!err) {
-          console.log(this.info)
-          // console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops)
-          this.pic = res.body.backdrops
-        }
+      .then((res) => {
+        console.log(res.body)
+        // console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops)
+        this.pic = res.body.backdrops
+      })
+      .catch(function (err) {
+        console.log(err.message, err.response)
       })
   }
 }
@@ -88,10 +89,10 @@ export default {
 //   visibility: hidden;
 // }
 .testimg {
-  height: 400px;
+  height: auto;
   width: 100%;
   img {
-    height: 100%;
+    // height: 100%;
     width: 100%;
     margin: 0 auto;
     // margin-top: -200px;
