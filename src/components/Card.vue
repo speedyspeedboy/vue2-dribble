@@ -4,7 +4,8 @@
     <ul class="scrollhor" >
       <li v-for="item in pic" :key="item.message">
         <div class="album">
-          <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path">
+          <!-- <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"> -->
+          <img src="https://image.tmdb.org/t/p/original/umC04Cozevu8nn3JTDJ1pc7PVTn.jpg">
         </div>
       </li>
     </ul>
@@ -16,7 +17,7 @@
         <!-- </transition> -->
         <h3 class="title">{{ item.original_title }}</h3>
         <p class="type">动画/科幻</p>
-        <p class="year">2016</p>
+        <p class="year">{{ item.release_date }}</p>
         <div class="rating">
           <!-- <template v-for="n in full">
             <span class="star-full"></span>
@@ -35,7 +36,8 @@ export default {
     return {
       pic: [],
       full: 5,
-      small: false
+      small: false,
+      apikey: 'd07c464d79587f342c608751fd48b9c2'
     }
   },
   computed: {
@@ -53,7 +55,7 @@ export default {
   },
   created () {
     request
-      .get('https://api.themoviedb.org/3/movie/245891/images?api_key=d07c464d79587f342c608751fd48b9c2')
+      .get('https://api.themoviedb.org/3/movie/245891/images?api_key=' + this.apikey)
       .end((err, res) => {
         if (!err) {
           console.log(res.body)
@@ -62,7 +64,7 @@ export default {
         }
       })
     request
-      .get('https://api.themoviedb.org/3/movie/popular?api_key=d07c464d79587f342c608751fd48b9c2&language=en-US&page=1')
+      .get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.apikey)
       .end((err, res) => {
         if (!err) {
           console.log(res.body)

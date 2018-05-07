@@ -3,16 +3,16 @@
     <!-- <img src="./assets/logo.png"> -->
     <!-- <header-bar></header-bar> -->
     <router-view></router-view>
-    <!-- <foot-bar></foot-bar> -->
+    <foot-bar></foot-bar>
   </div>
 </template>
 
 <script>
 // import HeaderBar from './components/HeaderBar'
-// import FootBar from './components/FootBar'
+import FootBar from './components/FootBar'
 export default {
-  name: 'App'
-  // components: { HeaderBar, FootBar }
+  name: 'App',
+  components: { FootBar }
 }
 </script>
 

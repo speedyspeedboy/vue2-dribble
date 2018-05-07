@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <router-view></router-view>
-    <foot-bar></foot-bar>
+    <!-- <foot-bar></foot-bar> -->
   </div>
 </template>
 
@@ -18,5 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  // height: 400px;
+  padding-bottom: 60px;
 }
 </style>

@@ -2,39 +2,76 @@
   <div>
     <div class="testimg">
       <!-- <transition name="scale"> -->
-        <img src="../assets/big.jpg" :class="{big: big}" @click="onClick">
+        <!-- <img src="https://image.tmdb.org/t/p/original//umC04Cozevu8nn3JTDJ1pc7PVTn.jpg" :class="{big: big}" @click="onClick"> -->
+        <img src="https://image.tmdb.org/t/p/original/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg" @click="onClick">
       <!-- </transition> -->
     </div>
     <div class="info">
-      <a>length</a>
-      <a>language</a>
-      <a>rating</a>
+      <a>{{ length }}min</a>
+      <a>{{ language }}</a>
+      <a>{{ vote }}</a>
     </div>
-    <ul class="scrollhor" >
-      <li v-for="item in items" :key="item">
-        <div class="album">
-          <img src="../assets/horzin.jpg">
-        </div>
-      </li>
-    </ul>
+    <div class="scrolldiv">
+      <ul class="scrollhor" >
+        <li v-for="item in pic" :key="item.message">
+          <div class="album">
+            <img :src="'https://image.tmdb.org/t/p/original/' + item.file_path">
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="intro">
-      <p>巨石强森饰演的灵长类动物学家一直与人类保持距离, 却跟极为聪明的银背大猩猩乔治有着深厚的感情。但是一次基因实验出错, 让这只温驯的大猩猩变成狂怒难驯的庞然巨兽。更可怕的是, 其他动物也发生了同样基因异变。他必须阻止这场全球性的灾难, 更重要是要拯救他的好友乔治。</p>
+      <span>{{ info }}</span>
     </div>
   </div>
 </template>
 
 <script>
+import request from 'superagent'
+
 export default {
   data () {
     return {
       big: false,
-      items: 3
+      items: 3,
+      apikey: 'd07c464d79587f342c608751fd48b9c2',
+      info: '',
+      length: '',
+      language: '',
+      vote: '',
+      pic: []
     }
   },
   methods: {
     onClick () {
       this.big = !this.big
     }
+  },
+  created () {
+    request
+      .get('https://api.themoviedb.org/3/movie/299536?api_key=' + this.apikey)
+      .then(res => {
+        // if (!err) {
+        // console.log(res.body)
+        console.log(res.body.overview)
+        console.log()
+        this.info = res.body.overview
+        this.length = res.body.runtime
+        this.language = res.body.original_language
+        this.vote = res.body.vote_average
+      })
+      .catch(function (err) {
+        console.log(err.message, err.response)
+      })
+    request
+      .get('https://api.themoviedb.org/3/movie/299536/images?api_key=' + this.apikey)
+      .end((err, res) => {
+        if (!err) {
+          console.log(this.info)
+          // console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops)
+          this.pic = res.body.backdrops
+        }
+      })
   }
 }
 </script>
@@ -51,9 +88,13 @@ export default {
 //   visibility: hidden;
 // }
 .testimg {
+  height: 400px;
+  width: 100%;
   img {
+    height: 100%;
     width: 100%;
-    margin-top: -200px;
+    margin: 0 auto;
+    // margin-top: -200px;
     transition: all .5s;
   }
   .big {
@@ -63,6 +104,7 @@ export default {
 .info {
   width: 100%;
   display: flex;
+  margin-top: 10px;
   // background: lightskyblue;
   a {
     display: block;
@@ -94,11 +136,16 @@ export default {
 .scrollhor {
   overflow-x: auto;
   white-space: nowrap;
+  padding-bottom: 10px;
+  margin-bottom: -10px;
   li {
     display: inline-block;
   }
 }
 .intro {
   margin: 20px;
+}
+.scrolldiv {
+  overflow: hidden;
 }
 </style>

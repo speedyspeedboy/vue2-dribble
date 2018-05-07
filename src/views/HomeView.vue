@@ -19,6 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 .homeview {
+  // height: 400px;
   // background: linear-gradient(165deg, rgb(255, 142, 93) 50%, rgb(255, 255, 255) 50%)no-repeat;
   // background-size: 100% 250px;
   // background-attachment: fixed;
