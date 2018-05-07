@@ -3,7 +3,7 @@
     <div class="scrolldiv">
     <ul class="scrollhor" >
       <li v-for="item in pic" :key="item.message">
-        <router-link :to="home/my" append>
+        <router-link :to="'/home/my'" append>
         <div class="album">
           <!-- <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"> -->
           <img :src="'https://image.tmdb.org/t/p/original/' + item.backdrop_path">
