@@ -39,7 +39,8 @@ export default {
       length: '',
       language: '',
       vote: '',
-      pic: []
+      pic: [],
+      movieid: 337167
     }
   },
   methods: {
@@ -49,7 +50,7 @@ export default {
   },
   created () {
     request
-      .get('https://api.themoviedb.org/3/movie/299536?api_key=' + this.apikey)
+      .get('https://api.themoviedb.org/3/movie/' + this.movieid + '?api_key=' + this.apikey)
       .then(res => {
         // if (!err) {
         // console.log(res.body)
@@ -64,7 +65,7 @@ export default {
         console.log(err.message, err.response)
       })
     request
-      .get('https://api.themoviedb.org/3/movie/299536/images?api_key=' + this.apikey)
+      .get('https://api.themoviedb.org/3/movie/' + this.movieid + '/images?api_key=' + this.apikey)
       .then((res) => {
         console.log(res.body)
         // console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops)
