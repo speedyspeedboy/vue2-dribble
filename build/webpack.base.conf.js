@@ -77,8 +77,15 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        loader: 'style-loader!css-loader!sass-loader'
+        loader: 'style-loader!css-loader!sass-loader',
+        options: {
+          limit: 80000
+        }
       }
+      // {
+      //   test: /\.(css)$/,
+      //   loader: 'css-loader!'
+      // }
     ]
   },
   node: {

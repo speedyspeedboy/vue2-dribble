@@ -2,8 +2,8 @@
   <div class="card">
     <div class="scrolldiv">
       <ul class="scrollhor" >
-        <li v-for="item in pic" :key="item.message">
-          <router-link :to="'/home/my/' + item.id" append>
+        <li v-for="item in pop_pic" :key="item.message">
+          <router-link :to="'/home/details/' + item.id" >
           <div class="album">
             <!-- <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"> -->
             <img :src="'https://image.tmdb.org/t/p/w780/' + item.backdrop_path">
@@ -13,10 +13,10 @@
       </ul>
     </div>
     <ul>
-      <li class="cardall" v-for="item in pic" :key="item.message" >
+      <li class="cardall" v-for="item in upcoming_pic" :key="item.message" >
           <!-- <img src="../assets/RMPGE.jpg"> -->
           <!-- <transition name="scale"> -->
-          <router-link :to="'/home/my/' + item.id" append>
+          <router-link :to="'/home/details/' + item.id">
             <img :src="'https://image.tmdb.org/t/p/w500/' + item.poster_path" :class="{small: small}" @click="onClick">
             <!-- </transition> -->
             <h3 class="title">{{ item.original_title }}</h3>
@@ -40,7 +40,8 @@ import request from 'superagent'
 export default {
   data () {
     return {
-      pic: [],
+      upcoming_pic: [],
+      pop_pic: [],
       horpic: [],
       full: 5,
       small: false,
@@ -77,7 +78,17 @@ export default {
       .then((res) => {
         console.log(res.body)
         console.log(res.body.results)
-        this.pic = res.body.results
+        this.pop_pic = res.body.results
+      })
+      .catch(function (err) {
+        console.log(err.message, err.response)
+      })
+    request
+      .get('https://api.themoviedb.org/3/movie/upcoming?api_key=' + this.apikey)
+      .then((res) => {
+        console.log(res.body)
+        console.log(res.body.results)
+        this.upcoming_pic = res.body.results
       })
       .catch(function (err) {
         console.log(err.message, err.response)

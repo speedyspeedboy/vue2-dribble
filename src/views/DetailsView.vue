@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="testimg">
+      <router-link to="/home" replace>
+        <i class="back iconfont icon-back"></i>
+      </router-link>
       <!-- <transition name="scale"> -->
         <!-- <img src="https://image.tmdb.org/t/p/original//umC04Cozevu8nn3JTDJ1pc7PVTn.jpg" :class="{big: big}" @click="onClick"> -->
         <img v-if="dypic[0]" :src="'https://image.tmdb.org/t/p/w1280/' + dypic[0].file_path" @click="onClick">
@@ -102,6 +105,17 @@ export default {
   .big {
     transform: scale(0.5);
   }
+}
+.back {
+  position: absolute;
+  float: left;
+  z-index: 1000;
+  top: 25px;
+  left: 25px;
+  font-size: 25px;
+  // font-weight: 900;
+  font-weight: bold;
+  color: rgba(240, 236, 236, 1);
 }
 .info {
   width: 100%;

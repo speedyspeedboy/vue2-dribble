@@ -5,12 +5,15 @@ import Router from 'vue-router'
 import HomeView from '../views/HomeView'
 import Home from '../views/Home'
 import RecentView from '../views/RecentView'
-import MyView from '../views/MyView'
+import DetailsView from '../views/DetailsView'
+import NotFoundComponent from '../views/NotFound'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
+    { path: '*', component: NotFoundComponent },
     {
       path: '/',
       name: 'HomeView',
@@ -33,8 +36,8 @@ export default new Router({
           component: RecentView
         },
         {
-          path: '/home/my/:id',
-          component: MyView
+          path: '/home/details/:id',
+          component: DetailsView
         }
       ]
     }
