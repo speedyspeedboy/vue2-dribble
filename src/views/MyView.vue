@@ -3,7 +3,7 @@
     <div class="testimg">
       <!-- <transition name="scale"> -->
         <!-- <img src="https://image.tmdb.org/t/p/original//umC04Cozevu8nn3JTDJ1pc7PVTn.jpg" :class="{big: big}" @click="onClick"> -->
-        <img src="https://image.tmdb.org/t/p/w1280/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg" @click="onClick">
+        <img v-if="dypic[0]" :src="'https://image.tmdb.org/t/p/w1280/' + dypic[0].file_path" @click="onClick">
       <!-- </transition> -->
     </div>
     <div class="info">
@@ -13,7 +13,7 @@
     </div>
     <div class="scrolldiv">
       <ul class="scrollhor" >
-        <li v-for="item in pic" :key="item.message">
+        <li v-if="dypic" v-for="item in dypic" :key="item.message">
           <div class="album">
             <img :src="'https://image.tmdb.org/t/p/w780/' + item.file_path">
           </div>
@@ -28,19 +28,18 @@
 
 <script>
 import request from 'superagent'
+// import
 
 export default {
   data () {
     return {
       big: false,
-      items: 3,
       apikey: 'd07c464d79587f342c608751fd48b9c2',
       info: '',
       length: '',
       language: '',
       vote: '',
-      pic: [],
-      movieid: 337167
+      dypic: []
     }
   },
   methods: {
@@ -50,7 +49,7 @@ export default {
   },
   created () {
     request
-      .get('https://api.themoviedb.org/3/movie/' + this.movieid + '?api_key=' + this.apikey)
+      .get('https://api.themoviedb.org/3/movie/' + this.$route.params.id + '?api_key=' + this.apikey)
       .then(res => {
         // if (!err) {
         // console.log(res.body)
@@ -65,11 +64,12 @@ export default {
         console.log(err.message, err.response)
       })
     request
-      .get('https://api.themoviedb.org/3/movie/' + this.movieid + '/images?api_key=' + this.apikey)
+      .get('https://api.themoviedb.org/3/movie/' + this.$route.params.id + '/images?api_key=' + this.apikey)
       .then((res) => {
         console.log(res.body)
         // console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops)
-        this.pic = res.body.backdrops
+        this.dypic = res.body.backdrops
+        console.log(this.dypic[0].file_path)
       })
       .catch(function (err) {
         console.log(err.message, err.response)

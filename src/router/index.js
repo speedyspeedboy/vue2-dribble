@@ -33,7 +33,7 @@ export default new Router({
           component: RecentView
         },
         {
-          path: '/home/my',
+          path: '/home/my/:id',
           component: MyView
         }
       ]

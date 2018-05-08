@@ -1,31 +1,35 @@
 <template>
   <div class="card">
     <div class="scrolldiv">
-    <ul class="scrollhor" >
-      <li v-for="item in pic" :key="item.message">
-        <router-link :to="'/home/my'" append>
-        <div class="album">
-          <!-- <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"> -->
-          <img :src="'https://image.tmdb.org/t/p/w780/' + item.backdrop_path">
-        </div>
-        </router-link>
+      <ul class="scrollhor" >
+        <li v-for="item in pic" :key="item.message">
+          <router-link :to="'/home/my/' + item.id" append>
+          <div class="album">
+            <!-- <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"> -->
+            <img :src="'https://image.tmdb.org/t/p/w780/' + item.backdrop_path">
+          </div>
+          </router-link>
+        </li>
+      </ul>
+    </div>
+    <ul>
+      <li class="cardall" v-for="item in pic" :key="item.message" >
+          <!-- <img src="../assets/RMPGE.jpg"> -->
+          <!-- <transition name="scale"> -->
+          <router-link :to="'/home/my/' + item.id" append>
+            <img :src="'https://image.tmdb.org/t/p/w500/' + item.poster_path" :class="{small: small}" @click="onClick">
+            <!-- </transition> -->
+            <h3 class="title">{{ item.original_title }}</h3>
+            <p class="type">动画/科幻</p>
+            <p class="year">{{ item.release_date }}</p>
+            <div class="rating">
+              <!-- <template v-for="n in full">
+                <span class="star-full"></span>
+              </template> -->
+            </div>
+          </router-link>
       </li>
     </ul>
-    </div>
-    <div class="cardall" v-for="item in pic" :key="item.message" >
-        <!-- <img src="../assets/RMPGE.jpg"> -->
-        <!-- <transition name="scale"> -->
-          <img :src="'https://image.tmdb.org/t/p/w500/' + item.poster_path" :class="{small: small}" @click="onClick">
-        <!-- </transition> -->
-        <h3 class="title">{{ item.original_title }}</h3>
-        <p class="type">动画/科幻</p>
-        <p class="year">{{ item.release_date }}</p>
-        <div class="rating">
-          <!-- <template v-for="n in full">
-            <span class="star-full"></span>
-          </template> -->
-        </div>
-    </div>
   </div>
 </template>
 
@@ -40,7 +44,8 @@ export default {
       horpic: [],
       full: 5,
       small: false,
-      apikey: 'd07c464d79587f342c608751fd48b9c2'
+      apikey: 'd07c464d79587f342c608751fd48b9c2',
+      movieid: 337167
     }
   },
   computed: {
@@ -110,6 +115,9 @@ export default {
   // background: aquamarine;
   box-shadow:  2px 3px 22px 4px rgba(102, 97, 97, 0.1);
   -webkit-overflow-scrolling: touch;
+  h3, p{
+    color: rgb(22, 22, 22)
+  }
   img {
     height: 100%;
     border-radius: 6px;
