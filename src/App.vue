@@ -2,9 +2,9 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <!-- <header-bar></header-bar> -->
-    <keep-alive>
+    <!-- <keep-alive> -->
       <router-view></router-view>
-    </keep-alive>
+    <!-- </keep-alive> -->
     <foot-bar></foot-bar>
   </div>
 </template>

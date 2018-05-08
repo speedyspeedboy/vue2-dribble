@@ -1,7 +1,9 @@
 <template>
   <div class="homeview">
       <header-bar></header-bar>
-      <card></card>
+      <keep-alive>
+        <card></card>
+      </keep-alive>
   </div>
 </template>
 
