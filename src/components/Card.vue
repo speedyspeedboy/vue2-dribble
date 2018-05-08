@@ -6,7 +6,7 @@
         <router-link :to="'/home/my'" append>
         <div class="album">
           <!-- <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"> -->
-          <img :src="'https://image.tmdb.org/t/p/original/' + item.backdrop_path">
+          <img :src="'https://image.tmdb.org/t/p/w780/' + item.backdrop_path">
         </div>
         </router-link>
       </li>
@@ -15,7 +15,7 @@
     <div class="cardall" v-for="item in pic" :key="item.message" >
         <!-- <img src="../assets/RMPGE.jpg"> -->
         <!-- <transition name="scale"> -->
-          <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path" :class="{small: small}" @click="onClick">
+          <img :src="'https://image.tmdb.org/t/p/w500/' + item.poster_path" :class="{small: small}" @click="onClick">
         <!-- </transition> -->
         <h3 class="title">{{ item.original_title }}</h3>
         <p class="type">动画/科幻</p>
@@ -156,7 +156,7 @@ export default {
   width: 200px;
   height: 130px;
   overflow: hidden;
-  border: 1px solid cornflowerblue;
+  // border: 1px solid cornflowerblue;
   position: relative;
   border-radius: 10px;
   img {

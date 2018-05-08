@@ -3,7 +3,7 @@
     <div class="testimg">
       <!-- <transition name="scale"> -->
         <!-- <img src="https://image.tmdb.org/t/p/original//umC04Cozevu8nn3JTDJ1pc7PVTn.jpg" :class="{big: big}" @click="onClick"> -->
-        <img src="https://image.tmdb.org/t/p/original/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg" @click="onClick">
+        <img src="https://image.tmdb.org/t/p/w1280/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg" @click="onClick">
       <!-- </transition> -->
     </div>
     <div class="info">
@@ -15,7 +15,7 @@
       <ul class="scrollhor" >
         <li v-for="item in pic" :key="item.message">
           <div class="album">
-            <img :src="'https://image.tmdb.org/t/p/original/' + item.file_path">
+            <img :src="'https://image.tmdb.org/t/p/w780/' + item.file_path">
           </div>
         </li>
       </ul>
@@ -121,7 +121,7 @@ export default {
   width: 200px;
   height: 130px;
   overflow: hidden;
-  border: 1px solid cornflowerblue;
+  // border: 1px solid cornflowerblue;
   position: relative;
   border-radius: 10px;
   img {
