@@ -2,7 +2,7 @@
   <div>
     <div class="testimg">
       <router-link to="/home" replace>
-        <i class="back iconfont icon-back"></i>
+        <i class="back iconfont icon-back1"></i>
       </router-link>
       <!-- <transition name="scale"> -->
         <!-- <img src="https://image.tmdb.org/t/p/original//umC04Cozevu8nn3JTDJ1pc7PVTn.jpg" :class="{big: big}" @click="onClick"> -->

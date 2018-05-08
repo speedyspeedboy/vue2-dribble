@@ -1,7 +1,7 @@
 <template>
   <div class="all">
     <div class="headbar">
-      <p>NEW</p>
+      <p>Popular</p>
     </div>
   </div>
 </template>
@@ -30,8 +30,8 @@ export default {
   margin-top: 25px;
   padding: 0 20px;
   p {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 1.7rem;
+    font-weight: bolder;
   }
 }
 </style>

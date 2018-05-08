@@ -7,6 +7,7 @@ import Home from '../views/Home'
 import RecentView from '../views/RecentView'
 import DetailsView from '../views/DetailsView'
 import NotFoundComponent from '../views/NotFound'
+import SearchView from '../views/SearchView'
 
 Vue.use(Router)
 
@@ -30,6 +31,10 @@ export default new Router({
         {
           path: '/home/homepage',
           component: HomeView
+        },
+        {
+          path: '/home/search',
+          component: SearchView
         },
         {
           path: '/home/recent',
