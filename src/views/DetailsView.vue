@@ -31,6 +31,8 @@
 
 <script>
 import request from 'superagent'
+import { mapState, mapMutations } from 'vuex'
+// import { Store } from 'vuex'
 // import
 
 export default {
@@ -45,12 +47,25 @@ export default {
       dypic: []
     }
   },
+  computed: {
+    ...mapState({
+      dypicc: state => state.movie.dypic
+    })
+  },
   methods: {
     onClick () {
       this.big = !this.big
-    }
+    },
+    ...mapMutations({
+      getMovie: 'getMovie'
+    })
+    // getMovie () {
+    //   this.$store.commit('getMovie')
+    // }
   },
   created () {
+    // this.getMovie()
+    // console.log(Store.state.dypic)
     request
       .get('https://api.themoviedb.org/3/movie/' + this.$route.params.id + '?api_key=' + this.apikey)
       .then(res => {
