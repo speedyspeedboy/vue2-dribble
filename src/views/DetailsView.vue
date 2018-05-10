@@ -30,68 +30,46 @@
 </template>
 
 <script>
-import request from 'superagent'
-import { mapState, mapMutations } from 'vuex'
-// import { Store } from 'vuex'
-// import
+// import request from 'superagent'
+import { mapState } from 'vuex'
 
 export default {
   data () {
     return {
-      big: false,
-      apikey: 'd07c464d79587f342c608751fd48b9c2',
-      info: '',
-      length: '',
-      language: '',
-      vote: '',
-      dypic: []
+      big: false
     }
   },
   computed: {
     ...mapState({
-      dypicc: state => state.movie.dypic
+      dypic: state => state.movie.dypic,
+      info: state => state.movie.info,
+      length: state => state.movie.length,
+      language: state => state.movie.language,
+      vote: state => state.movie.vote
     })
   },
   methods: {
+    // getMovie: function () {
+    //   this.$store.dispatch('getMovie')
+    // },
+    // getDetails: function () {
+    //   this.$store.dispatch('getDetails')
+    // },
     onClick () {
       this.big = !this.big
-    },
-    ...mapMutations({
-      getMovie: 'getMovie'
-    })
-    // getMovie () {
-    //   this.$store.commit('getMovie')
-    // }
+    }
   },
   created () {
-    // this.getMovie()
-    // console.log(Store.state.dypic)
-    request
-      .get('https://api.themoviedb.org/3/movie/' + this.$route.params.id + '?api_key=' + this.apikey)
-      .then(res => {
-        // if (!err) {
-        // console.log(res.body)
-        // console.log(res.body.overview)
-        // console.log()
-        this.info = res.body.overview
-        this.length = res.body.runtime
-        this.language = res.body.original_language
-        this.vote = res.body.vote_average
-      })
-      .catch(function (err) {
-        console.log(err.message, err.response)
-      })
-    request
-      .get('https://api.themoviedb.org/3/movie/' + this.$route.params.id + '/images?api_key=' + this.apikey)
-      .then((res) => {
-        console.log(res.body)
-        // console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops)
-        this.dypic = res.body.backdrops
-        console.log(this.dypic[0].file_path)
-      })
-      .catch(function (err) {
-        console.log(err.message, err.response)
-      })
+    const id = this.$route.params.id
+    console.log(id)
+    this.$store.dispatch({
+      type: 'getMovie',
+      id: id
+    })
+    this.$store.dispatch({
+      type: 'getDetails',
+      id: id
+    })
   }
 }
 </script>

@@ -35,64 +35,31 @@
 
 <script>
 import { mapState } from 'vuex'
-import request from 'superagent'
 
 export default {
   data () {
     return {
-      upcoming_pic: [],
-      pop_pic: [],
-      horpic: [],
       full: 5,
-      small: false,
-      apikey: 'd07c464d79587f342c608751fd48b9c2',
-      movieid: 337167
+      small: false
     }
   },
   computed: {
     ...mapState({
-      newMovies: state => state.movie.moviePictures
+      upcoming_pic: state => state.card.upcoming_pic,
+      pop_pic: state => state.card.pop_pic,
+      horpic: state => state.card.horpic
     })
   },
   methods: {
     onClick () {
       this.small = !this.small
     },
-    getMovie: function () {
-      this.$store.dispatch('getMovie')
+    getCardMovie: function () {
+      this.$store.dispatch('getCardMovie')
     }
   },
   created () {
-    request
-      .get('https://api.themoviedb.org/3/movie/245891/images?api_key=' + this.apikey)
-      .then((res) => {
-        // console.log(res.body)
-        // console.log('https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path)
-        // this.pic = 'https://image.tmdb.org/t/p/original/' + res.body.backdrops[0].file_path
-      })
-      .catch(function (err) {
-        console.log(err.message, err.response)
-      })
-    request
-      .get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.apikey)
-      .then((res) => {
-        console.log(res.body)
-        console.log(res.body.results)
-        this.pop_pic = res.body.results
-      })
-      .catch(function (err) {
-        console.log(err.message, err.response)
-      })
-    request
-      .get('https://api.themoviedb.org/3/movie/upcoming?api_key=' + this.apikey + '&page=1')
-      .then((res) => {
-        console.log(res.body)
-        console.log(res.body.results)
-        this.upcoming_pic = res.body.results
-      })
-      .catch(function (err) {
-        console.log(err.message, err.response)
-      })
+    this.getCardMovie()
   }
 }
 </script>
