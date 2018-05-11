@@ -6,7 +6,7 @@
           <router-link :to="'/home/details/' + item.id" >
           <div class="album">
             <!-- <img :src="'https://image.tmdb.org/t/p/original/' + item.poster_path"> -->
-            <img :src="'https://image.tmdb.org/t/p/w780/' + item.backdrop_path">
+            <img v-lazy="'https://image.tmdb.org/t/p/w780/' + item.backdrop_path">
           </div>
           </router-link>
         </li>
@@ -17,7 +17,7 @@
           <!-- <img src="../assets/RMPGE.jpg"> -->
           <!-- <transition name="scale"> -->
           <router-link :to="'/home/details/' + item.id">
-            <img :src="'https://image.tmdb.org/t/p/w500/' + item.poster_path" :class="{small: small}" @click="onClick">
+            <img v-lazy="'https://image.tmdb.org/t/p/w500/' + item.poster_path" :class="{small: small}" @click="onClick">
             <!-- </transition> -->
             <h3 class="title">{{ item.original_title }}</h3>
             <p class="type">动画/科幻</p>

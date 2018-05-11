@@ -5,6 +5,14 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './common/fonts/iconfont.css'
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: '.assets/logo.png',
+  loading: 'http://static.daydayyiday.com/vue2-dribble/src/assets/logo.png',
+  attempt: 1
+})
 // import Vuex from 'vuex'
 
 Vue.config.productionTip = false
